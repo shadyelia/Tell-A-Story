@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
 
       this.authSerivce.login(this.loginVM).subscribe(res => {
         //localStorage.setItem("token", "");
+        //localStorage.setItem("person", res);
 
         this.router.navigate["/dashboard"];
       });

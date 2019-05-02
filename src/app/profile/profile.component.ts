@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { AuthService } from "../services/auth.service";
+import { Person } from "../models/PersonVM";
 
 @Component({
   selector: "app-profile",
@@ -8,11 +10,19 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class ProfileComponent implements OnInit {
   id: number;
-  constructor(private router: ActivatedRoute) {}
+  person: Person;
+  constructor(
+    private router: ActivatedRoute,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.router.params.subscribe(res => {
-      this.id = res["id"];
+      if (res["id"] == this.authService.getAuthUserId) {
+        this.person = this.authService.getAuthUser();
+      }
     });
   }
+
+  //Promise.resolve(this.authService.getAuthUser());
 }
