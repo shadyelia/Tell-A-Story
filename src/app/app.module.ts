@@ -11,6 +11,7 @@ import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./guards/auth.guard";
 import { AuthedGuard } from "./guards/authed.guard";
 import { NotifyService } from "./services/notify.service";
+import { UserServices } from "./services/user.service";
 
 import { HttpModule } from "@angular/http";
 
@@ -18,7 +19,7 @@ import { AppComponent } from "./app.component";
 import { RegisterComponent } from "./register/register.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoginComponent } from "./login/login.component";
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from "./profile/profile.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot() // ToastrModule added
   ],
-  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService],
+  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService, UserServices],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
