@@ -13,16 +13,16 @@
                 <input id="email" type="email" class="form-control" formControlName="email">
               </div>
               <div class="error-message" *ngIf="
-                  registrationFrom.get('email').hasError('email') &&
-                  !registrationFrom.get('email').hasError('required')
+              loginForm.get('email').hasError('email') &&
+                  !loginForm.get('email').hasError('required')
                 ">
                 Invalid E-mail
               </div>
               <div class="error-message" *ngIf="
-                  registrationFrom
+              loginForm
                     .get('email')
                     .hasError('required') &&
-                  (registrationFrom.get('email').touched || showValid)
+                  (loginForm.get('email').touched || showValid)
                 ">
                 E-mail Is required
               </div>
@@ -35,17 +35,17 @@
                   validateEqualTo="confirmPassword">
               </div>
               <div class="error-message" *ngIf="
-                  registrationFrom
+              loginForm
                     .get('password')
                     .hasError('required') &&
-                  (registrationFrom.get('password').touched ||
+                  (loginForm.get('password').touched ||
                     showValid)
                 ">
                 Password is required
               </div>
               <div class="error-message" *ngIf="
-                  registrationFrom.get('password').touched &&
-                  registrationFrom.get('password').hasError('pattern')
+              loginForm.get('password').touched &&
+              loginForm.get('password').hasError('pattern')
                 ">
                 Password isn't strong
               </div>
