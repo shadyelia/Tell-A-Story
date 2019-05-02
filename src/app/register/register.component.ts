@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { AuthService } from '../services/auth.service'
+import { Person } from "../models/Person";
+import { Route } from '@angular/router'
 
 @Component({
   selector: 'app-register',
@@ -15,8 +18,14 @@ export class RegisterComponent implements OnInit {
   passwordType: string;
   showConfirmPassword: boolean;
   confirmPasswordType: string;
+  person = new Person();
 
-  constructor() {
+  constructor(private authSerivce: AuthService, private route: Route) {
+
+
+  }
+
+  ngOnInit() {
     this.registrationFrom = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl(
@@ -46,14 +55,23 @@ export class RegisterComponent implements OnInit {
         ])
       )
     });
+
     this.passwordType = 'password';
     this.confirmPasswordType = 'password';
   }
 
-  ngOnInit() {
-  }
-
   signUp() {
+    if (this.registrationFrom.valid) {
+      this.person.name = this.registrationFrom.get('name').value();
+      this.person.email = this.registrationFrom.get('email').value();
+      this.person.password = this.registrationFrom.get('password').value();
 
+      this.authSerivce.register(this.person).subscribe(res => {
+
+        //localStorage.setItem("token", "");
+
+        this.route.path['/dashboard']
+      });
+    }
   }
 }

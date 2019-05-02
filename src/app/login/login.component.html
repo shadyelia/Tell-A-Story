@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">Login</div>
+        <div class="panel-body">
+
+          <form class="form-horizontal" [formGroup]="loginForm">
+
+            <div class="form-group">
+              <label for="name" class="control-label col-md-4">E-mail Address</label>
+              <div class="col-md-6">
+                <input id="email" type="email" class="form-control" formControlName="email">
+              </div>
+              <div class="error-message" *ngIf="
+                  registrationFrom.get('email').hasError('email') &&
+                  !registrationFrom.get('email').hasError('required')
+                ">
+                Invalid E-mail
+              </div>
+              <div class="error-message" *ngIf="
+                  registrationFrom
+                    .get('email')
+                    .hasError('required') &&
+                  (registrationFrom.get('email').touched || showValid)
+                ">
+                E-mail Is required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="col-md-4 control-label">Password</label>
+              <div class="col-md-6">
+                <input type="password" class="form-control" formControlName="password" clearOnEdit="false"
+                  validateEqualTo="confirmPassword">
+              </div>
+              <div class="error-message" *ngIf="
+                  registrationFrom
+                    .get('password')
+                    .hasError('required') &&
+                  (registrationFrom.get('password').touched ||
+                    showValid)
+                ">
+                Password is required
+              </div>
+              <div class="error-message" *ngIf="
+                  registrationFrom.get('password').touched &&
+                  registrationFrom.get('password').hasError('pattern')
+                ">
+                Password isn't strong
+              </div>
+            </div>
+
+
+
+            <div class="form-group">
+              <div class="col-md-8 col-md-offset-4">
+                <button type="submit" class="btn btn-primary" (click)="login()">
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
