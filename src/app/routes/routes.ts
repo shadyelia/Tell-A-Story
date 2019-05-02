@@ -3,6 +3,7 @@ import { DashboardComponent } from "../dashboard/dashboard.component";
 import { LoginComponent } from "../login/login.component";
 import { AuthGuard } from "../guards/auth.guard";
 import { AuthedGuard } from "../guards/authed.guard";
+import { ProfileComponent } from "../profile/profile.component";
 
 export const Routes = [
   {
@@ -23,6 +24,11 @@ export const Routes = [
   {
     path: "dashboard",
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "user/profile/:id",
+    component: ProfileComponent,
     canActivate: [AuthGuard]
   }
 ];
