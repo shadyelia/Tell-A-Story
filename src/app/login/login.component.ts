@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { AuthService } from '../services/auth.service'
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, Validators, FormControl } from "@angular/forms";
+import { AuthService } from "../services/auth.service";
 import { LoginVM } from "../models/LoginVM";
-import { Route } from '@angular/router'
-
+import { Route } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
   showValid: boolean = false;
@@ -20,17 +19,16 @@ export class LoginComponent implements OnInit {
   confirmPasswordType: string;
   loginVM = new LoginVM();
 
-  constructor(private authSerivce: AuthService, private route: Route) {
-  }
+  constructor(private authSerivce: AuthService, private route: Route) {}
 
   ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl(
-        '',
+        "",
         Validators.compose([Validators.required, Validators.email])
       ),
       password: new FormControl(
-        '',
+        "",
         Validators.compose([
           Validators.required,
           Validators.minLength(8),
@@ -38,23 +36,20 @@ export class LoginComponent implements OnInit {
             /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$-/:-?{-~!"^_`\[\]@%$*])(?=.{8,})/
           )
         ])
-      ),
-
+      )
     });
   }
 
   login() {
     if (this.loginForm.valid) {
-      this.loginVM.email = this.loginForm.get('email').value();
-      this.loginVM.password = this.loginForm.get('password').value();
+      this.loginVM.email = this.loginForm.get("email").value();
+      this.loginVM.password = this.loginForm.get("password").value();
 
       this.authSerivce.login(this.loginVM).subscribe(res => {
-
         //localStorage.setItem("token", "");
 
-        this.route.path['/dashboard']
+        this.route.path["/dashboard"];
       });
     }
   }
-
 }
