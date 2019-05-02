@@ -9,7 +9,7 @@ import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./guards/auth.guard";
 import { AuthedGuard } from "./guards/authed.guard";
 
-import { HttpClientModule } from "@angular/common/http";
+import { HttpModule } from "@angular/http";
 
 import { AppComponent } from "./app.component";
 import { RegisterComponent } from "./register/register.component";
@@ -28,7 +28,7 @@ import { LoginComponent } from "./login/login.component";
     RouterModule.forRoot(Routes),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpModule
   ],
   providers: [AuthService, AuthGuard, AuthedGuard],
   bootstrap: [AppComponent]

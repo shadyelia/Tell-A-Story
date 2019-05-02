@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
 import { AuthService } from "../services/auth.service";
 import { LoginVM } from "../models/LoginVM";
-import { Route } from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   confirmPasswordType: string;
   loginVM = new LoginVM();
 
-  constructor(private authSerivce: AuthService, private route: Route) {}
+  constructor(private authSerivce: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.authSerivce.login(this.loginVM).subscribe(res => {
         //localStorage.setItem("token", "");
 
-        this.route.path["/dashboard"];
+        this.router.navigate["/dashboard"];
       });
     }
   }

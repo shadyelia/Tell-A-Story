@@ -6,6 +6,16 @@ import { AuthedGuard } from "../guards/authed.guard";
 
 export const Routes = [
   {
+    path: "",
+    component: LoginComponent,
+    canActivate: [AuthedGuard]
+  },
+  {
+    path: "auth/login",
+    component: LoginComponent,
+    canActivate: [AuthedGuard]
+  },
+  {
     path: "auth/register",
     component: RegisterComponent,
     canActivate: [AuthedGuard]
@@ -14,10 +24,5 @@ export const Routes = [
     path: "dashboard",
     component: DashboardComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: "auth/login",
-    component: LoginComponent,
-    canActivate: [AuthedGuard]
   }
 ];

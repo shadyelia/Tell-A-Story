@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { AuthService } from '../services/auth.service'
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, Validators, FormControl } from "@angular/forms";
+import { AuthService } from "../services/auth.service";
 import { Person } from "../models/PersonVM";
-import { Route } from '@angular/router'
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.css"]
 })
 export class RegisterComponent implements OnInit {
-
   showValid: boolean = false;
   signupError: string;
   registrationFrom: FormGroup;
@@ -20,20 +19,17 @@ export class RegisterComponent implements OnInit {
   confirmPasswordType: string;
   person = new Person();
 
-  constructor(private authSerivce: AuthService, private route: Route) {
-
-
-  }
+  constructor(private authSerivce: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.registrationFrom = new FormGroup({
-      name: new FormControl('', Validators.required),
+      name: new FormControl("", Validators.required),
       email: new FormControl(
-        '',
+        "",
         Validators.compose([Validators.required, Validators.email])
       ),
       password: new FormControl(
-        '',
+        "",
         Validators.compose([
           Validators.required,
           Validators.minLength(8),
@@ -44,7 +40,7 @@ export class RegisterComponent implements OnInit {
         ])
       ),
       confirmPassword: new FormControl(
-        '',
+        "",
         Validators.compose([
           Validators.required,
           // this.equalto('password'),
@@ -56,21 +52,20 @@ export class RegisterComponent implements OnInit {
       )
     });
 
-    this.passwordType = 'password';
-    this.confirmPasswordType = 'password';
+    this.passwordType = "password";
+    this.confirmPasswordType = "password";
   }
 
   signUp() {
     if (this.registrationFrom.valid) {
-      this.person.name = this.registrationFrom.get('name').value();
-      this.person.email = this.registrationFrom.get('email').value();
-      this.person.password = this.registrationFrom.get('password').value();
+      this.person.name = this.registrationFrom.get("name").value();
+      this.person.email = this.registrationFrom.get("email").value();
+      this.person.password = this.registrationFrom.get("password").value();
 
       this.authSerivce.register(this.person).subscribe(res => {
-
         //localStorage.setItem("token", "");
 
-        this.route.path['/dashboard']
+        this.router.navigate["/dashboard"];
       });
     }
   }

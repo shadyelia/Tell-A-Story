@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { AuthService } from "./services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -7,4 +9,16 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "tellAStory";
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    this.authService.logout().subscribe(res => {
+      this.router.navigate["/auth/login"];
+    });
+  }
 }

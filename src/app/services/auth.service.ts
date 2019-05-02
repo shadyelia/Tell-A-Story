@@ -24,7 +24,12 @@ export class AuthService {
     return this.http.post(environment.url, person); //,this.httpOptions
   }
 
+  logout() {
+    localStorage.clear();
+    return this.http.get(environment.url); //,this.httpOptions
+  }
+
   isLoggedIn(): boolean {
-    return localStorage.getItem("token") === undefined ? false : true;
+    return localStorage.getItem("token") === null ? false : true;
   }
 }
