@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service'
-import { Person } from "../models/Person";
+import { LoginVM } from "../models/LoginVM";
 import { Route } from '@angular/router'
 
 
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   passwordType: string;
   showConfirmPassword: boolean;
   confirmPasswordType: string;
-  person = new Person();
+  loginVM = new LoginVM();
 
   constructor(private authSerivce: AuthService, private route: Route) {
   }
@@ -45,10 +45,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      this.person.email = this.loginForm.get('email').value();
-      this.person.password = this.loginForm.get('password').value();
+      this.loginVM.email = this.loginForm.get('email').value();
+      this.loginVM.password = this.loginForm.get('password').value();
 
-      this.authSerivce.login(this.person).subscribe(res => {
+      this.authSerivce.login(this.loginVM).subscribe(res => {
 
         //localStorage.setItem("token", "");
 
