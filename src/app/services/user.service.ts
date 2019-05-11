@@ -1,21 +1,20 @@
+import { AuthService } from "./auth.service";
 import { Injectable } from "@angular/core";
 import { Http, Headers, RequestOptions } from "@angular/http";
-import { AuthService } from "./auth.service";
 import { environment } from "../../environments/environment";
 
-Injectable();
-
-export class UserServices {
+@Injectable()
+export class UserService {
   private headers: Headers;
 
-  constructor() {
+  constructor(private authService: AuthService, private http: Http) {
     this.headers = new Headers({
-      //Authorization: `Bearer ${this.authService.getToken()}`
+      Authorization: `Bearer ${this.authService.getToken()}`
     });
   }
 
   getUserById(id) {
     let options = new RequestOptions({ headers: this.headers });
-    //aspreturn this.http.get(`${environment.url}/user/${id}`, options);
+    return this.http.get(`${environment.url}user${id}`, options);
   }
 }

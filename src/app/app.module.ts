@@ -11,7 +11,7 @@ import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./guards/auth.guard";
 import { AuthedGuard } from "./guards/authed.guard";
 import { NotifyService } from "./services/notify.service";
-import { UserServices } from "./services/user.service";
+import { UserService } from "./services/user.service";
 
 import { HttpModule } from "@angular/http";
 
@@ -41,7 +41,7 @@ import { FormatDatePipe } from "./pipes/format-date.pipe";
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot() // ToastrModule added
   ],
-  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService, UserServices],
+  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
