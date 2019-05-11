@@ -1,9 +1,9 @@
-import { RegisterComponent } from "../register/register.component";
-import { DashboardComponent } from "../dashboard/dashboard.component";
-import { LoginComponent } from "../login/login.component";
+import { RegisterComponent } from "../Pages/register/register.component";
+import { DashboardComponent } from "../Pages/dashboard/dashboard.component";
+import { LoginComponent } from "../Pages/login/login.component";
 import { AuthGuard } from "../guards/auth.guard";
 import { AuthedGuard } from "../guards/authed.guard";
-import { ProfileComponent } from "../profile/profile.component";
+import { ProfileComponent } from "../Pages/profile/profile.component";
 
 export const Routes = [
   {

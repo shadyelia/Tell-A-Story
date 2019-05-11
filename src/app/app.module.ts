@@ -16,10 +16,10 @@ import { UserService } from "./services/user.service";
 import { HttpModule } from "@angular/http";
 
 import { AppComponent } from "./app.component";
-import { RegisterComponent } from "./register/register.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { LoginComponent } from "./login/login.component";
-import { ProfileComponent } from "./profile/profile.component";
+import { RegisterComponent } from "./Pages/register/register.component";
+import { DashboardComponent } from "./Pages/dashboard/dashboard.component";
+import { LoginComponent } from "./Pages/login/login.component";
+import { ProfileComponent } from "./Pages/profile/profile.component";
 
 import { FormatDatePipe } from "./pipes/format-date.pipe";
 
