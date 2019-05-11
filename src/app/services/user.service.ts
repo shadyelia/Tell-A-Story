@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { AuthService } from "./auth.service";
-import { Person } from "../models/PersonVM";
 import { environment } from "../../environments/environment";
 
 Injectable();

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AuthService } from "../services/auth.service";
 import { Person } from "../models/PersonVM";
+import { UserServices } from "../services/user.service";
 
 @Component({
   selector: "app-profile",
@@ -10,16 +11,21 @@ import { Person } from "../models/PersonVM";
 })
 export class ProfileComponent implements OnInit {
   id: number;
-  person: Person;
+  person: any;
   constructor(
     private router: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private userServices: UserServices
   ) {}
 
   ngOnInit() {
     this.router.params.subscribe(res => {
-      if (res["id"] == this.authService.getAuthUserId) {
+      if (res["id"] != this.authService.getAuthUserId) {
         this.person = this.authService.getAuthUser();
+      } else {
+        this.userServices.getUserById(res["id"]).subscribe(val => {
+          this.person = val;
+        });
       }
     });
   }
