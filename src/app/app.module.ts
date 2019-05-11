@@ -21,13 +21,16 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoginComponent } from "./login/login.component";
 import { ProfileComponent } from "./profile/profile.component";
 
+import { FormatDatePipe } from "./pipes/format-date.pipe";
+
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     DashboardComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    FormatDatePipe
   ],
   imports: [
     BrowserModule,

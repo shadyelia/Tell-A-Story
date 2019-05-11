@@ -8,14 +8,14 @@ Injectable();
 export class UserServices {
   private headers: Headers;
 
-  constructor(private authService: AuthService, private http: Http) {
+  constructor() {
     this.headers = new Headers({
-      Authorization: `Bearer ${this.authService.getToken()}`
+      //Authorization: `Bearer ${this.authService.getToken()}`
     });
   }
 
   getUserById(id) {
     let options = new RequestOptions({ headers: this.headers });
-    return this.http.get(`${environment.url}/user/${id}`, options);
+    //aspreturn this.http.get(`${environment.url}/user/${id}`, options);
   }
 }

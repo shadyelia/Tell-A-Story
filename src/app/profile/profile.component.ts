@@ -12,6 +12,7 @@ import { UserServices } from "../services/user.service";
 export class ProfileComponent implements OnInit {
   id: number;
   person: any;
+  date = "24th Dec 2009";
   constructor(
     private router: ActivatedRoute,
     private authService: AuthService,
@@ -23,9 +24,9 @@ export class ProfileComponent implements OnInit {
       if (res["id"] != this.authService.getAuthUserId) {
         this.person = this.authService.getAuthUser();
       } else {
-        this.userServices.getUserById(res["id"]).subscribe(val => {
+        /* this.userServices.getUserById(res["id"]).subscribe(val => {
           this.person = val;
-        });
+        });*/
       }
     });
   }
