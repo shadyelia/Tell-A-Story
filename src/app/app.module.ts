@@ -6,6 +6,7 @@ import { Routes } from "./routes/routes";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgProgressModule, NgProgressBrowserXhr } from "ngx-progressbar";
 
 import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./guards/auth.guard";
@@ -13,7 +14,7 @@ import { AuthedGuard } from "./guards/authed.guard";
 import { NotifyService } from "./services/notify.service";
 import { UserService } from "./services/user.service";
 
-import { HttpModule } from "@angular/http";
+import { BrowserXhr, HttpModule } from "@angular/http";
 
 import { AppComponent } from "./app.component";
 import { RegisterComponent } from "./Pages/register/register.component";
@@ -39,9 +40,17 @@ import { FormatDatePipe } from "./pipes/format-date.pipe";
     ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    NgProgressModule
   ],
-  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService, UserService],
+  providers: [
+    AuthService,
+    AuthGuard,
+    AuthedGuard,
+    NotifyService,
+    UserService,
+    { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

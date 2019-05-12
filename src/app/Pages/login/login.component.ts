@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormControl } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { LoginVM } from "../../models/LoginVM";
 import { Router } from "@angular/router";
+//import { NgProgress } from "ngx-progressbar";
 
 @Component({
   selector: "app-login",
@@ -19,7 +20,11 @@ export class LoginComponent implements OnInit {
   confirmPasswordType: string;
   loginVM = new LoginVM();
 
-  constructor(private authSerivce: AuthService, private router: Router) {}
+  constructor(
+    private authSerivce: AuthService,
+    private router: Router
+  ) //public ngProgress: NgProgress
+  {}
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -42,6 +47,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
+      //this.ngProgress.start();
       this.loginVM.email = this.loginForm.get("email").value();
       this.loginVM.password = this.loginForm.get("password").value();
 
@@ -49,6 +55,7 @@ export class LoginComponent implements OnInit {
         //localStorage.setItem("token", "");
         //localStorage.setItem("person", res);
 
+        //this.ngProgress.done();
         this.router.navigate["/dashboard"];
       });
     }
