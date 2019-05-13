@@ -34,11 +34,13 @@ export class AuthService {
   }
 
   getAuthUser(): Person {
-    return JSON.parse(localStorage.getItem("person"));
+    var Person = JSON.parse(localStorage.getItem("person"));
+    if (Person) return Person;
   }
 
   getAuthUserId(): number {
-    return JSON.parse(localStorage.getItem("person")).id;
+    var Person = JSON.parse(localStorage.getItem("person"));
+    if (Person) return Person.id;
   }
 
   getToken(): string {

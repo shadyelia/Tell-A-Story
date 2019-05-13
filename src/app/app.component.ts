@@ -9,8 +9,11 @@ import { Router } from "@angular/router";
 })
 export class AppComponent {
   title = "tellAStory";
+  id: number;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.id = this.authService.getAuthUserId();
+  }
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();

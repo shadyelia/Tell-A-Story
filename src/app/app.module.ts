@@ -17,10 +17,12 @@ import { UserService } from "./services/user.service";
 import { BrowserXhr, HttpModule } from "@angular/http";
 
 import { AppComponent } from "./app.component";
-import { RegisterComponent } from "./Pages/register/register.component";
-import { DashboardComponent } from "./Pages/dashboard/dashboard.component";
-import { LoginComponent } from "./Pages/login/login.component";
-import { ProfileComponent } from "./Pages/profile/profile.component";
+import { RegisterComponent } from "./pages/register/register.component";
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { ProfileComponent } from "./pages/profile/profile.component";
+import { ProfileWallComponent } from "./pages/profile/profile-wall/profile-wall.component";
+import { EditProfileComponent } from "./pages/profile/edit-profile/edit-profile.component";
 
 import { FormatDatePipe } from "./pipes/format-date.pipe";
 
@@ -31,7 +33,9 @@ import { FormatDatePipe } from "./pipes/format-date.pipe";
     DashboardComponent,
     LoginComponent,
     ProfileComponent,
-    FormatDatePipe
+    FormatDatePipe,
+    ProfileWallComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

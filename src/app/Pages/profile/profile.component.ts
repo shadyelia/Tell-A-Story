@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
-import { Person } from "../../models/PersonVM";
+//import { Person } from "../../models/PersonVM";
 import { UserService } from "../../services/user.service";
 
 @Component({
@@ -21,14 +21,19 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.router.params.subscribe(res => {
-      if (res["id"] != this.authService.getAuthUserId) {
+      this.id = +res["id"];
+      if (this.id != +this.authService.getAuthUserId) {
         this.person = this.authService.getAuthUser();
       } else {
-        /* this.userServices.getUserById(res["id"]).subscribe(val => {
+        this.userServices.getUserById(this.id).subscribe(val => {
           this.person = val;
-        });*/
+        });
       }
     });
+  }
+
+  isAuthUserProfile(): boolean {
+    return this.id == +this.authService.getAuthUserId;
   }
 
   //Promise.resolve(this.authService.getAuthUser());

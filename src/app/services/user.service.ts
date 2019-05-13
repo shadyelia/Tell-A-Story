@@ -13,7 +13,7 @@ export class UserService {
     });
   }
 
-  getUserById(id) {
+  getUserById(id: number) {
     let options = new RequestOptions({ headers: this.headers });
     return this.http.get(`${environment.url}user${id}`, options);
   }

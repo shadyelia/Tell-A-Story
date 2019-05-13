@@ -1,9 +1,11 @@
-import { RegisterComponent } from "../Pages/register/register.component";
-import { DashboardComponent } from "../Pages/dashboard/dashboard.component";
-import { LoginComponent } from "../Pages/login/login.component";
+import { RegisterComponent } from "../pages/register/register.component";
+import { DashboardComponent } from "../pages/dashboard/dashboard.component";
+import { LoginComponent } from "../pages/login/login.component";
 import { AuthGuard } from "../guards/auth.guard";
 import { AuthedGuard } from "../guards/authed.guard";
-import { ProfileComponent } from "../Pages/profile/profile.component";
+import { ProfileComponent } from "../pages/profile/profile.component";
+import { ProfileWallComponent } from "./../pages/profile/profile-wall/profile-wall.component";
+import { EditProfileComponent } from "./../pages/profile/edit-profile/edit-profile.component";
 
 export const Routes = [
   {
@@ -29,6 +31,16 @@ export const Routes = [
   {
     path: "user/profile/:id",
     component: ProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: "",
+        component: ProfileWallComponent
+      },
+      {
+        path: "edit",
+        component: EditProfileComponent
+      }
+    ]
   }
 ];
