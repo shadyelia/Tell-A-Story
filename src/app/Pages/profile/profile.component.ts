@@ -16,8 +16,12 @@ export class ProfileComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private authService: AuthService,
-    private userServices: UserService
-  ) {}
+    private userService: UserService
+  ) {
+    this.userService.userProfileUpdated.subscribe(person => {
+      this.person = person;
+    });
+  }
 
   ngOnInit() {
     this.router.params.subscribe(res => {
@@ -25,7 +29,7 @@ export class ProfileComponent implements OnInit {
       if (this.id != +this.authService.getAuthUserId) {
         this.person = this.authService.getAuthUser();
       } else {
-        this.userServices.getUserById(this.id).subscribe(val => {
+        this.userService.getUserById(this.id).subscribe(val => {
           this.person = val;
         });
       }

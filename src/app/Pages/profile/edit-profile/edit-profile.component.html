@@ -1,20 +1,20 @@
-<div class="col-md-12">
+<div class="col-md-12" *ngIf="person">
   <div class="panel panel-default">
     <div class="panel-heading">
       Edit Profile
     </div>
     <div class="panel-body">
-      <form>
+      <form [formGroup]="personForm">
         <div class="form-group">
           <label>Your name</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="name">
         </div>
         <div class="form-group">
           <label>Your email</label>
-          <input type="email" class="form-control">
+          <input type="email" class="form-control" formControlName="email">
         </div>
         <div class="form-group">
-          <button class="btn btn-success">Save changes </button>
+          <button class="btn btn-success" (onclick)="editProfile()">Save changes </button>
         </div>
       </form>
     </div>

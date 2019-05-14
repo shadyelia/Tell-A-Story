@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { Person } from "../models/PersonVM";
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { environment } from "../../environments/environment";
-import { HttpHeaders } from "@angular/common/http";
 import { LoginVM } from "../models/LoginVM";
+import { Register } from "../models/RegisterVM";
 
 @Injectable()
 export class AuthService {
@@ -19,7 +19,7 @@ export class AuthService {
     return this.http.post(environment.url + "/login", loginVM);
   }
 
-  register(person: Person) {
+  register(person: Register) {
     return this.http.post(environment.url + "/register", person);
   }
 

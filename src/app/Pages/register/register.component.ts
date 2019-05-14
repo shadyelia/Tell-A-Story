@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
-import { Person } from "../../models/PersonVM";
+import { Register } from "../../models/RegisterVM";
 import { Router } from "@angular/router";
 
 @Component({
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   passwordType: string;
   showConfirmPassword: boolean;
   confirmPasswordType: string;
-  person = new Person();
+  person = new Register();
 
   constructor(private authSerivce: AuthService, private router: Router) {}
 
