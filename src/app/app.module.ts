@@ -13,6 +13,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { AuthedGuard } from "./guards/authed.guard";
 import { NotifyService } from "./services/notify.service";
 import { UserService } from "./services/user.service";
+import { FollowService } from "./services/follow.service";
 
 import { BrowserXhr, HttpModule } from "@angular/http";
 
@@ -23,6 +24,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { ProfileWallComponent } from "./pages/profile/profile-wall/profile-wall.component";
 import { EditProfileComponent } from "./pages/profile/edit-profile/edit-profile.component";
+import { FollowComponent } from "./pages/profile/follow/follow.component";
 
 import { FormatDatePipe } from "./pipes/format-date.pipe";
 
@@ -35,7 +37,8 @@ import { FormatDatePipe } from "./pipes/format-date.pipe";
     ProfileComponent,
     FormatDatePipe,
     ProfileWallComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    FollowComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { FormatDatePipe } from "./pipes/format-date.pipe";
     AuthedGuard,
     NotifyService,
     UserService,
+    FollowService,
     { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
   ],
   bootstrap: [AppComponent]
