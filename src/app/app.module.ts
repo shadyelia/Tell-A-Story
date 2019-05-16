@@ -27,6 +27,7 @@ import { EditProfileComponent } from "./pages/profile/edit-profile/edit-profile.
 import { FollowComponent } from "./pages/profile/follow/follow.component";
 
 import { FormatDatePipe } from "./pipes/format-date.pipe";
+import { CreateStoryComponent } from './pages/create-story/create-story.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FormatDatePipe } from "./pipes/format-date.pipe";
     FormatDatePipe,
     ProfileWallComponent,
     EditProfileComponent,
-    FollowComponent
+    FollowComponent,
+    CreateStoryComponent
   ],
   imports: [
     BrowserModule,
