@@ -1,11 +1,11 @@
 <div class="col-lg-4" *ngIf="person">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <p class="text-center">{{Person.nam}}'s profile</p>
+      <p class="text-center">{{Person.name}}'s profile</p>
     </div>
     <div class="panel-body">
       <div class="text-center">
-        <img src="http://placehold.it/150x150" style="border-radius: 50%" width="140px" height="140px" alt="">
+        <img ngxGravatar [email]="Person.email" size="30" src="http://placehold.it/150x150" [style]="styleObject">
       </div>
       <br>
       <p class="text-center">

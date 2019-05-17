@@ -7,11 +7,12 @@ import { ProfileComponent } from "../pages/profile/profile.component";
 import { ProfileWallComponent } from "./../pages/profile/profile-wall/profile-wall.component";
 import { EditProfileComponent } from "./../pages/profile/edit-profile/edit-profile.component";
 import { CreateStoryComponent } from "./../pages/create-story/create-story.component";
+import { HomeComponent } from "./../pages/home/home.component";
 
 export const Routes = [
   {
     path: "",
-    component: LoginComponent,
+    component: HomeComponent,
     canActivate: [AuthedGuard]
   },
   {

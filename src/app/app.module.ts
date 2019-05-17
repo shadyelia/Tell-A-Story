@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgProgressModule, NgProgressBrowserXhr } from "ngx-progressbar";
+import { GravatarModule } from "ngx-gravatar";
 
 import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./guards/auth.guard";
@@ -29,6 +30,8 @@ import { FollowComponent } from "./pages/profile/follow/follow.component";
 
 import { FormatDatePipe } from "./pipes/format-date.pipe";
 import { CreateStoryComponent } from "./pages/create-story/create-story.component";
+import { StoryComponent } from "./pages/story/story.component";
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { CreateStoryComponent } from "./pages/create-story/create-story.componen
     ProfileWallComponent,
     EditProfileComponent,
     FollowComponent,
-    CreateStoryComponent
+    CreateStoryComponent,
+    StoryComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,8 @@ import { CreateStoryComponent } from "./pages/create-story/create-story.componen
     HttpModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    NgProgressModule
+    NgProgressModule,
+    GravatarModule
   ],
   providers: [
     AuthService,

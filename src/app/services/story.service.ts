@@ -19,6 +19,21 @@ export class StoryService {
 
   createStory(story: Story) {
     let options = new RequestOptions({ headers: this.headers });
-    return this.http.post(`${environment.url}/story`, story, options);
+    return this.http.post(`${environment.url}/stories`, story, options);
+  }
+
+  updateStory(story: Story) {
+    let options = new RequestOptions({ headers: this.headers });
+    return this.http.put(`${environment.url}/stories`, story, options);
+  }
+
+  getAllStories() {
+    let options = new RequestOptions({ headers: this.headers });
+    return this.http.get(`${environment.url}/stories`, options);
+  }
+
+  deleteStory(id: number) {
+    let options = new RequestOptions({ headers: this.headers });
+    return this.http.delete(`${environment.url}/stories/${id}`, options);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
+import { NotifyService } from "../../services/notify.service";
 import { LoginVM } from "../../models/LoginVM";
 import { Router } from "@angular/router";
 //import { NgProgress } from "ngx-progressbar";
@@ -21,10 +22,10 @@ export class LoginComponent implements OnInit {
   loginVM = new LoginVM();
 
   constructor(
+    private notifyService: NotifyService,
     private authSerivce: AuthService,
-    private router: Router
-  ) //public ngProgress: NgProgress
-  {}
+    private router: Router //public ngProgress: NgProgress
+  ) {}
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -51,13 +52,18 @@ export class LoginComponent implements OnInit {
       this.loginVM.email = this.loginForm.get("email").value();
       this.loginVM.password = this.loginForm.get("password").value();
 
-      this.authSerivce.login(this.loginVM).subscribe(res => {
-        //localStorage.setItem("token", "");
-        //localStorage.setItem("person", res);
+      this.authSerivce.login(this.loginVM).subscribe(
+        res => {
+          //localStorage.setItem("token", "");
+          //localStorage.setItem("person", res);
 
-        //this.ngProgress.done();
-        this.router.navigate["/dashboard"];
-      });
+          //this.ngProgress.done();
+          this.router.navigate["/dashboard"];
+        },
+        error => {
+          this.notifyService.notify(false, error.error, "error");
+        }
+      );
     }
   }
 }

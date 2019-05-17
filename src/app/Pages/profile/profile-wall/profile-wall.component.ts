@@ -23,4 +23,14 @@ export class ProfileWallComponent implements OnInit {
       });
     });
   }
+
+  storyDeleted(storyId: number) {
+    let story = this.stories.find(s => {
+      return s.id == storyId;
+    });
+
+    let storyIndex = this.stories.indexOf(story);
+
+    this.stories.splice(storyIndex, 1);
+  }
 }

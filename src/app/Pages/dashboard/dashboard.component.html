@@ -1,3 +1,5 @@
-<p>
-  dashboard works!
-</p>
+<div *ngIf="stories">
+  <div *ngFor="let story of stories">
+    <app-story [story]="story" (storyDeleted)="storyDeleted($event)"></app-story>
+  </div>
+</div>
