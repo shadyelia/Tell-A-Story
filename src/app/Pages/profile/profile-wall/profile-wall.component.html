@@ -1,3 +1,5 @@
-<p>
-  profile-wall works!
-</p>
+<div *ngIf="stories">
+  <div *ngFor="let story of stories">
+    <app-story [story]="story" (storyDeleted)="jokeDeleted($event)"></app-story>
+  </div>
+</div>

@@ -14,6 +14,7 @@ import { AuthedGuard } from "./guards/authed.guard";
 import { NotifyService } from "./services/notify.service";
 import { UserService } from "./services/user.service";
 import { FollowService } from "./services/follow.service";
+import { StoryService } from "./services/story.service";
 
 import { BrowserXhr, HttpModule } from "@angular/http";
 
@@ -27,7 +28,7 @@ import { EditProfileComponent } from "./pages/profile/edit-profile/edit-profile.
 import { FollowComponent } from "./pages/profile/follow/follow.component";
 
 import { FormatDatePipe } from "./pipes/format-date.pipe";
-import { CreateStoryComponent } from './pages/create-story/create-story.component';
+import { CreateStoryComponent } from "./pages/create-story/create-story.component";
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { CreateStoryComponent } from './pages/create-story/create-story.componen
     NotifyService,
     UserService,
     FollowService,
+    StoryService,
     { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
   ],
   bootstrap: [AppComponent]

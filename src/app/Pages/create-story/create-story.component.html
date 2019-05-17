@@ -5,17 +5,41 @@
         Create Story
       </div>
       <div class="panel-body">
-        <form>
+        <form [formGroup]="storyForm" ngSubmit)="saveStory()">
           <div class="form-group">
             <label>Story title</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="title">
+            <div class="error-message" *ngIf="
+            storyForm
+                  .get('title')
+                  .hasError('required') &&
+                (storyForm.get('title').touched && showValid)
+              ">
+              title Is required
+            </div>
           </div>
           <div class="form-group">
             <label>Story content</label>
-            <textarea cols="5" rows="5" class="form-control"></textarea>
+            <textarea cols="5" rows="5" class="form-control" formControlName="content"></textarea>
+            <div class="error-message" *ngIf="
+            storyForm
+                  .get('content')
+                  .hasError('required') &&
+                (storyForm.get('content').touched && showValid)
+              ">
+              content Is required
+            </div>
+            <div class="error-message" *ngIf="
+            storyForm
+                  .get('content')
+                  .hasError('minlength') &&
+                (storyForm.get('content').touched && showValid)
+              ">
+              content Is more than 15
+            </div>
           </div>
           <div class="form-group text-center">
-            <button class="btn btn-info">
+            <button type="submit" class="btn btn-info" [disabled]="storyForm.invalid">
               Create Story
             </button>
           </div>

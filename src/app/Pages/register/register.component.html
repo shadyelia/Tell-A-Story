@@ -14,7 +14,7 @@
               </div>
               <div class="error-message" *ngIf="
 							registrationFrom.get('name').hasError('required') &&
-							(registrationFrom.get('name').touched || showValid)
+							(registrationFrom.get('name').touched && showValid)
 						">
                 Name is required
               </div>
@@ -35,7 +35,7 @@
 							registrationFrom
 								.get('email')
 								.hasError('required') &&
-							(registrationFrom.get('email').touched || showValid)
+							(registrationFrom.get('email').touched && showValid)
 						">
                 E-mail Is required
               </div>

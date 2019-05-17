@@ -29,4 +29,9 @@ export class UserService {
     let options = new RequestOptions({ headers: this.headers });
     return this.http.put(`${environment.url}/user`, person, options);
   }
+
+  getAllStoriessById(id: number) {
+    let options = new RequestOptions({ headers: this.headers });
+    return this.http.get(`${environment.url}/stories/${id}`, options);
+  }
 }
