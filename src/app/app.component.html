@@ -3,8 +3,8 @@
 <app-login></app-login>
 <app-register></app-register>
 
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
+<nav class="navbar navbar-default navbar-static-top backgroundColor">
+  <div class="container ">
     <div class="navbar-header">
       <a class="navbar-brand">
         Tell A Story
@@ -15,20 +15,19 @@
         <li><a>All stories</a></li>
       </ul> -->
 
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!isLoggedIn()"><button class="btn btn-default noBorder"
+      <ul>
+        <li *ngIf="!isLoggedIn()"><button class="btn btn-default test"
             (click)="ngxSmartModalService.getModal('loginModal').open()">Login</button>
         </li>
         <li *ngIf="!isLoggedIn()">
-          <button class="btn btn-default noBorder"
-            (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button> </li>
-        <li *ngIf="isLoggedIn() && id"><a [routerLink]="['/user/profile' , id ]">My Profile</a> </li>
-        <li *ngIf="isLoggedIn()"><a (click)="logout()">Logout</a> </li>
+          <button (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button> </li>
+        <li *ngIf="isLoggedIn() && id"><button [routerLink]="['/user/profile' , id ]">My Profile</button> </li>
+        <li *ngIf="isLoggedIn()"><button (click)="logout()">Logout</button> </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div>
+<div class="container">
   <router-outlet></router-outlet>
 </div>
