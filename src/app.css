@@ -4184,6 +4184,8 @@ tbody.collapse.in {
     border-radius: 4px;
   }
   .navbar-header {
+    color: white;
+
     float: left;
   }
   .navbar-collapse {

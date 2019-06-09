@@ -1,24 +1,26 @@
 import { AuthService } from "./auth.service";
 import { Injectable, EventEmitter } from "@angular/core";
-import { Http, Headers, RequestOptions } from "@angular/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Person } from "../models/PersonVM";
 
 @Injectable()
 export class UserService {
   public userProfileUpdated: EventEmitter<Person>;
-  private headers: Headers;
+  private headers: HttpHeaders;
 
-  constructor(private authService: AuthService, private http: Http) {
+  constructor(private authService: AuthService, private http: HttpClient) {
     this.userProfileUpdated = new EventEmitter();
-    this.headers = new Headers({
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
       Authorization: `Bearer ${this.authService.getToken()}`
     });
   }
 
   getUserById(id: number) {
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.get(`${environment.url}/user${id}`, options);
+    return this.http.get(`${environment.url}/user${id}`, {
+      headers: this.headers
+    });
   }
 
   fireUpdateEvent(person: any) {
@@ -26,12 +28,14 @@ export class UserService {
   }
 
   editProfile(person: Person) {
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.put(`${environment.url}/user`, person, options);
+    return this.http.put(`${environment.url}/user`, person, {
+      headers: this.headers
+    });
   }
 
   getAllStoriessById(id: number) {
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.get(`${environment.url}/stories/${id}`, options);
+    return this.http.get(`${environment.url}/stories/${id}`, {
+      headers: this.headers
+    });
   }
 }

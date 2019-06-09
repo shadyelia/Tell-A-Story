@@ -1,6 +1,6 @@
-<div class="container">
+<ngx-smart-modal #registerModal [identifier]=" 'registerModal' " customClass="nsm-dialog-animation-rtl">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">Register</div>
         <div class="panel-body">
@@ -95,6 +95,9 @@
                 <button type="submit" class="btn btn-primary" (click)="signUp()" [disabled]="!registrationFrom.valid">
                   Register
                 </button>
+                <button class="btn btn-primary" (click)="registerModal.close()">
+                  Close
+                </button>
               </div>
 
             </div>
@@ -103,4 +106,4 @@
       </div>
     </div>
   </div>
-</div>
+</ngx-smart-modal>

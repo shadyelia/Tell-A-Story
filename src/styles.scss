@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+$color-overlay: rgba(0, 0, 0, 0.7);
+
+@import "~ngx-smart-modal/ngx-smart-modal";
+
+.error-message {
+  position: sticky;
+  top: calc(100% - 31px);
+  padding: 0 3px;
+  color: #f53d3d;
+  font-size: 12px;
+  font-weight: 300;
+  margin-right: 5px;
+}

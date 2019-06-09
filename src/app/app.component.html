@@ -1,27 +1,42 @@
 <ng-progress></ng-progress>
 
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
+<app-login></app-login>
+<app-register></app-register>
+
+<nav class="navbar navbar-default navbar-static-top backgroundColor">
+  <div class="container ">
     <div class="navbar-header">
       <a class="navbar-brand">
         Tell A Story
       </a>
     </div>
     <div>
-      <!-- <ul class="nav navbar-nav">
-        <li><a>All stories</a></li>
-      </ul> -->
-
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!isLoggedIn()"><a routerLink="/auth/login">Login</a> </li>
-        <li *ngIf="!isLoggedIn()"><a routerLink="/auth/register">Register</a> </li>
-        <li *ngIf="isLoggedIn() && id"><a [routerLink]="['/user/profile' , id ]">My Profile</a> </li>
-        <li *ngIf="isLoggedIn()"><a (click)="logout()">Logout</a> </li>
+      <ul>
+        <li *ngIf="!isLoggedIn()"><button class="btn btn-default test"
+            (click)="ngxSmartModalService.getModal('loginModal').open()">Login</button>
+        </li>
+        <li *ngIf="!isLoggedIn()">
+          <button (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button> </li>
+        <li *ngIf="isLoggedIn() && id"><button [routerLink]="['/user/profile' , id ]">My Profile</button> </li>
+        <li *ngIf="isLoggedIn()"><button (click)="logout()">Logout</button> </li>
       </ul>
     </div>
+
+    <!-- <div class="mode-toggle__container">
+      <span class="mode-toggle__text">Light</span>
+
+      <label class="toggle-button__container">
+        <input (click)="modeToggleSwitch()" type="checkbox" class="mode-toggle__input" />
+        <span [ngClass]="{'mode-toggle__bg-checked': darkModeActive}" class="mode-toggle__bg"></span>
+        <span [ngClass]="{'mode-toggle__circle-checked': darkModeActive}" class="mode-toggle__circle"></span>
+      </label>
+
+
+      <span class="mode-toggle__text">Dark</span>
+    </div> -->
   </div>
 </nav>
 
-<div>
+<div class="container">
   <router-outlet></router-outlet>
 </div>

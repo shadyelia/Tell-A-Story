@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
-import { Http, Headers, RequestOptions } from "@angular/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 
 @Injectable()
 export class FollowService {
-  private headers: Headers;
+  private headers: HttpHeaders;
 
-  constructor(private http: Http) {
-    this.headers = new Headers({
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
       Authorization: `Bearer ${this.getToken()}`
     });
   }
@@ -18,23 +19,22 @@ export class FollowService {
 
   isFollowing(id: number) {
     let body = { user_to_check_if_is_following_id: id };
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.post(
-      environment.url + "/user/is/following",
-      body,
-      options
-    );
+    return this.http.post(environment.url + "/user/is/following", body, {
+      headers: this.headers
+    });
   }
 
   follow(id: number) {
     let body = { user_to_follow_id: id };
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.post(environment.url + "/user/follow", body, options);
+    return this.http.post(environment.url + "/user/follow", body, {
+      headers: this.headers
+    });
   }
 
   unFollow(id: number) {
     let body = { user_to_unfollow_id: id };
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.post(environment.url + "/user/unFollow", body, options);
+    return this.http.post(environment.url + "/user/unFollow", body, {
+      headers: this.headers
+    });
   }
 }

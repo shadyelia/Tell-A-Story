@@ -1,16 +1,17 @@
 import { Injectable } from "@angular/core";
 import { Person } from "../models/PersonVM";
-import { Http, Headers, RequestOptions } from "@angular/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { LoginVM } from "../models/LoginVM";
 import { Register } from "../models/RegisterVM";
 
 @Injectable()
 export class AuthService {
-  private headers: Headers;
+  private headers: HttpHeaders;
 
-  constructor(private http: Http) {
-    this.headers = new Headers({
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
       Authorization: `Bearer ${this.getToken()}`
     });
   }
@@ -25,8 +26,9 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.get(environment.url + "/logout", options); //,this.httpOptions
+    return this.http.get(environment.url + "/logout", {
+      headers: this.headers
+    });
   }
 
   isLoggedIn(): boolean {

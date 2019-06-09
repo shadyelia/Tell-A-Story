@@ -1,14 +1,15 @@
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import { Story } from "../models/storyVM";
-import { Http, Headers, RequestOptions } from "@angular/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class StoryService {
-  private headers: Headers;
+  private headers: HttpHeaders;
 
-  constructor(private http: Http) {
-    this.headers = new Headers({
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
       Authorization: `Bearer ${this.getToken()}`
     });
   }
@@ -18,22 +19,26 @@ export class StoryService {
   }
 
   createStory(story: Story) {
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.post(`${environment.url}/stories`, story, options);
+    return this.http.post(`${environment.url}/stories`, story, {
+      headers: this.headers
+    });
   }
 
   updateStory(story: Story) {
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.put(`${environment.url}/stories`, story, options);
+    return this.http.put(`${environment.url}/stories`, story, {
+      headers: this.headers
+    });
   }
 
   getAllStories() {
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.get(`${environment.url}/stories`, options);
+    return this.http.get(`${environment.url}/stories`, {
+      headers: this.headers
+    });
   }
 
   deleteStory(id: number) {
-    let options = new RequestOptions({ headers: this.headers });
-    return this.http.delete(`${environment.url}/stories/${id}`, options);
+    return this.http.delete(`${environment.url}/stories/${id}`, {
+      headers: this.headers
+    });
   }
 }
