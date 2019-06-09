@@ -17,7 +17,7 @@ import { UserService } from "./services/user.service";
 import { FollowService } from "./services/follow.service";
 import { StoryService } from "./services/story.service";
 
-import { BrowserXhr, HttpModule } from "@angular/http";
+import { HttpClientModule, XhrFactory } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { RegisterComponent } from "./pages/register/register.component";
@@ -31,7 +31,7 @@ import { FollowComponent } from "./pages/profile/follow/follow.component";
 import { FormatDatePipe } from "./pipes/format-date.pipe";
 import { CreateStoryComponent } from "./pages/create-story/create-story.component";
 import { StoryComponent } from "./pages/story/story.component";
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from "./pages/home/home.component";
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { HomeComponent } from './pages/home/home.component';
     RouterModule.forRoot(Routes),
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     NgProgressModule,
@@ -67,7 +67,7 @@ import { HomeComponent } from './pages/home/home.component';
     UserService,
     FollowService,
     StoryService,
-    { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
+    { provide: XhrFactory, useClass: NgProgressBrowserXhr }
   ],
   bootstrap: [AppComponent]
 })
