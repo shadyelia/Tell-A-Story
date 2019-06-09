@@ -1,18 +1,16 @@
-ul {
+mat-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
 }
 
-li {
+mat-list-item {
   float: left;
 }
 
-li button {
+mat-list-item button {
   display: block;
-  color: white;
   text-align: center;
   padding: 16px;
   text-decoration: none;
@@ -20,7 +18,7 @@ li button {
   border: none;
 }
 
-li button:hover {
+mat-list-item button:hover {
   background-color: #111111;
 }
 

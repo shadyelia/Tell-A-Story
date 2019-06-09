@@ -3,7 +3,7 @@
 <app-login></app-login>
 <app-register></app-register>
 
-<nav class="navbar navbar-default navbar-static-top backgroundColor">
+<mat-card class="navbar navbar-static-top">
   <div class="container ">
     <div class="navbar-header">
       <a class="navbar-brand">
@@ -11,15 +11,17 @@
       </a>
     </div>
     <div>
-      <ul>
-        <li *ngIf="!isLoggedIn()"><button class="btn btn-default test"
+      <mat-list>
+        <mat-list-item *ngIf="!isLoggedIn()"><button mat-button color="warn"
             (click)="ngxSmartModalService.getModal('loginModal').open()">Login</button>
-        </li>
-        <li *ngIf="!isLoggedIn()">
-          <button (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button> </li>
-        <li *ngIf="isLoggedIn() && id"><button [routerLink]="['/user/profile' , id ]">My Profile</button> </li>
-        <li *ngIf="isLoggedIn()"><button (click)="logout()">Logout</button> </li>
-      </ul>
+        </mat-list-item>
+        <mat-list-item *ngIf="!isLoggedIn()">
+          <button mat-button color="accent"
+            (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button> </mat-list-item>
+        <mat-list-item *ngIf="isLoggedIn() && id"><button [routerLink]="['/user/profile' , id ]">My Profile</button>
+        </mat-list-item>
+        <mat-list-item *ngIf="isLoggedIn()"><button (click)="logout()">Logout</button> </mat-list-item>
+      </mat-list>
     </div>
 
     <!-- <div class="mode-toggle__container">
@@ -35,7 +37,7 @@
       <span class="mode-toggle__text">Dark</span>
     </div> -->
   </div>
-</nav>
+</mat-card>
 
 <div class="container">
   <router-outlet></router-outlet>

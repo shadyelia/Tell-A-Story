@@ -34,6 +34,8 @@ import { StoryComponent } from "./pages/story/story.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { NgxSmartModalModule } from "ngx-smart-modal";
 
+import { MatButtonModule, MatListModule, MatCardModule } from '@angular/material'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +61,10 @@ import { NgxSmartModalModule } from "ngx-smart-modal";
     ToastrModule.forRoot(), // ToastrModule added
     NgProgressModule,
     GravatarModule,
-    NgxSmartModalModule.forRoot()
+    NgxSmartModalModule.forRoot(),
+    MatButtonModule,
+    MatListModule,
+    MatCardModule
   ],
   providers: [
     AuthService,
@@ -73,4 +78,4 @@ import { NgxSmartModalModule } from "ngx-smart-modal";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
