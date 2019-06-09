@@ -29,4 +29,8 @@ export class AppComponent {
       this.router.navigate["/auth/login"];
     });
   }
+
+  modeToggleSwitch() {
+    // this.ui.darkModeState.next(!this.darkModeActive);
+  }
 }

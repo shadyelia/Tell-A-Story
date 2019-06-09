@@ -26,7 +26,7 @@
 
 .container-login100 {
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -41,7 +41,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 .container-login100::before {
