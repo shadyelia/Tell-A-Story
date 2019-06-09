@@ -32,6 +32,7 @@ import { FormatDatePipe } from "./pipes/format-date.pipe";
 import { CreateStoryComponent } from "./pages/create-story/create-story.component";
 import { StoryComponent } from "./pages/story/story.component";
 import { HomeComponent } from "./pages/home/home.component";
+import { NgxSmartModalModule } from "ngx-smart-modal";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { HomeComponent } from "./pages/home/home.component";
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     NgProgressModule,
-    GravatarModule
+    GravatarModule,
+    NgxSmartModalModule.forRoot()
   ],
   providers: [
     AuthService,

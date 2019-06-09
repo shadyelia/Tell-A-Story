@@ -1,5 +1,8 @@
 <ng-progress></ng-progress>
 
+<app-login></app-login>
+<app-register></app-register>
+
 <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
@@ -13,8 +16,12 @@
       </ul> -->
 
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!isLoggedIn()"><a routerLink="/auth/login">Login</a> </li>
-        <li *ngIf="!isLoggedIn()"><a routerLink="/auth/register">Register</a> </li>
+        <li *ngIf="!isLoggedIn()"><button class="btn btn-default noBorder"
+            (click)="ngxSmartModalService.getModal('loginModal').open()">Login</button>
+        </li>
+        <li *ngIf="!isLoggedIn()">
+          <button class="btn btn-default noBorder"
+            (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button> </li>
         <li *ngIf="isLoggedIn() && id"><a [routerLink]="['/user/profile' , id ]">My Profile</a> </li>
         <li *ngIf="isLoggedIn()"><a (click)="logout()">Logout</a> </li>
       </ul>

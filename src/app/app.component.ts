@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { AuthService } from "./services/auth.service";
 import { Router } from "@angular/router";
+import { NgxSmartModalService } from "ngx-smart-modal";
 
 @Component({
   selector: "app-root",
@@ -11,7 +12,11 @@ export class AppComponent {
   title = "tellAStory";
   id: number;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    public ngxSmartModalService: NgxSmartModalService
+  ) {
     this.id = this.authService.getAuthUserId();
   }
 
