@@ -92,10 +92,11 @@
 
             <div class="form-group">
               <div class="col-md-8 col-md-offset-4">
-                <button type="submit" class="btn btn-primary" (click)="signUp()" [disabled]="!registrationFrom.valid">
+                <button mat-button color="primary" type="submit" (click)="signUp()"
+                  [disabled]="!registrationFrom.valid">
                   Register
                 </button>
-                <button class="btn btn-primary" (click)="registerModal.close()">
+                <button mat-button color="accent" (click)="registerModal.close()">
                   Close
                 </button>
               </div>

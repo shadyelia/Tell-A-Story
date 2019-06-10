@@ -3,41 +3,36 @@
 <app-login></app-login>
 <app-register></app-register>
 
-<mat-card class="navbar navbar-static-top">
-  <div class="container ">
-    <div class="navbar-header">
-      <a class="navbar-brand">
-        Tell A Story
-      </a>
-    </div>
-    <div>
-      <mat-list>
-        <mat-list-item *ngIf="!isLoggedIn()"><button mat-button color="warn"
-            (click)="ngxSmartModalService.getModal('loginModal').open()">Login</button>
-        </mat-list-item>
-        <mat-list-item *ngIf="!isLoggedIn()">
-          <button mat-button color="accent"
-            (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button> </mat-list-item>
-        <mat-list-item *ngIf="isLoggedIn() && id"><button [routerLink]="['/user/profile' , id ]">My Profile</button>
-        </mat-list-item>
-        <mat-list-item *ngIf="isLoggedIn()"><button (click)="logout()">Logout</button> </mat-list-item>
-      </mat-list>
-    </div>
-
-    <!-- <div class="mode-toggle__container">
-      <span class="mode-toggle__text">Light</span>
-
-      <label class="toggle-button__container">
-        <input (click)="modeToggleSwitch()" type="checkbox" class="mode-toggle__input" />
-        <span [ngClass]="{'mode-toggle__bg-checked': darkModeActive}" class="mode-toggle__bg"></span>
-        <span [ngClass]="{'mode-toggle__circle-checked': darkModeActive}" class="mode-toggle__circle"></span>
-      </label>
 
 
-      <span class="mode-toggle__text">Dark</span>
-    </div> -->
+<mat-toolbar color="primary">
+
+  <button mat-button routerLink="/">
+    <mat-icon>home</mat-icon>
+    {{title}}
+  </button>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button color="warn" (click)="ngxSmartModalService.getModal('loginModal').open()">Login</button>
+    <button mat-button color="accent" (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button>
+    <button *ngIf="isLoggedIn() && id" [routerLink]="['/user/profile' , id ]">My Profile</button>
+    <button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+    <button mat-button (click)="changeTheme()">Save changes</button>
   </div>
-</mat-card>
+  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item routerLink="/products">Products</button>
+  <button mat-menu-item routerLink="/dashboard">Dashboard</button>
+  <!--<button mat-menu-item>Help</button>-->
+</mat-menu>
+
+
 
 <div class="container">
   <router-outlet></router-outlet>

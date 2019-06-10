@@ -1,27 +1,5 @@
-mat-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-mat-list-item {
-  float: left;
-}
-
-mat-list-item button {
-  display: block;
-  text-align: center;
-  padding: 16px;
-  text-decoration: none;
-  background-color: transparent;
-  border: none;
-}
-
-mat-list-item button:hover {
-  background-color: #111111;
-}
-
-.backgroundColor {
-  background-color: #333333;
+.fill-remaining-space {
+  /*This fills the remaining space, by using flexbox.  
+ Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
 }

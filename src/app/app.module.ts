@@ -34,7 +34,15 @@ import { StoryComponent } from "./pages/story/story.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { NgxSmartModalModule } from "ngx-smart-modal";
 
-import { MatButtonModule, MatListModule, MatCardModule } from '@angular/material'
+import {
+  MatButtonModule,
+  MatListModule,
+  MatCardModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatMenuModule
+} from "@angular/material";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -64,7 +72,11 @@ import { MatButtonModule, MatListModule, MatCardModule } from '@angular/material
     NgxSmartModalModule.forRoot(),
     MatButtonModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    FlexLayoutModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [
     AuthService,
@@ -78,4 +90,4 @@ import { MatButtonModule, MatListModule, MatCardModule } from '@angular/material
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
