@@ -1,84 +1,83 @@
 <ngx-smart-modal #registerModal [identifier]=" 'registerModal' " customClass="nsm-dialog-animation-rtl">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">Register</div>
-        <div class="panel-body">
-          <form class="form-horizontal" [formGroup]="registrationFrom">
+  <mat-card class="mat-typography app-frame mat-app-background">
+    <div class="panel panel-default">
+      <div class="panel-heading" color="accent">Register</div>
+      <mat-card class="panel-body">
+        <form class="form-horizontal" [formGroup]="registrationFrom">
 
-            <div class="form-group">
-              <label for="name" class="control-label col-md-4">Full name</label>
+          <div class="form-group">
+            <label for="name" class="control-label col-md-4">Full name</label>
 
-              <div class="col-md-6">
-                <input id="name" type="text" name="name" class="form-control" formControlName="name">
-              </div>
-              <div class="error-message" *ngIf="
+            <div class="col-md-6">
+              <input id="name" type="text" name="name" class="form-control" formControlName="name">
+            </div>
+            <div class="error-message" *ngIf="
 							registrationFrom.get('name').hasError('required') &&
 							(registrationFrom.get('name').touched && showValid)
 						">
-                Name is required
-              </div>
+              Name is required
             </div>
+          </div>
 
-            <div class="form-group">
-              <label for="name" class="control-label col-md-4">E-mail Address</label>
-              <div class="col-md-6">
-                <input id="email" type="email" class="form-control" formControlName="email">
-              </div>
-              <div class="error-message" *ngIf="
+          <div class="form-group">
+            <label for="name" class="control-label col-md-4">E-mail Address</label>
+            <div class="col-md-6">
+              <input id="email" type="email" class="form-control" formControlName="email">
+            </div>
+            <div class="error-message" *ngIf="
 							registrationFrom.get('email').hasError('email') &&
 							!registrationFrom.get('email').hasError('required')
 						">
-                Invalid E-mail
-              </div>
-              <div class="error-message" *ngIf="
+              Invalid E-mail
+            </div>
+            <div class="error-message" *ngIf="
 							registrationFrom
 								.get('email')
 								.hasError('required') &&
 							(registrationFrom.get('email').touched && showValid)
 						">
-                E-mail Is required
-              </div>
+              E-mail Is required
             </div>
+          </div>
 
-            <div class="form-group">
-              <label for="password" class="col-md-4 control-label">Password</label>
-              <div class="col-md-6">
-                <input type="password" class="form-control" formControlName="password" clearOnEdit="false"
-                  validateEqualTo="confirmPassword">
-              </div>
-              <div class="error-message" *ngIf="
+          <div class="form-group">
+            <label for="password" class="col-md-4 control-label">Password</label>
+            <div class="col-md-6">
+              <input type="password" class="form-control" formControlName="password" clearOnEdit="false"
+                validateEqualTo="confirmPassword">
+            </div>
+            <div class="error-message" *ngIf="
 							registrationFrom
 								.get('password')
 								.hasError('required') &&
 							(registrationFrom.get('password').touched ||
 								showValid)
 						">
-                Password is required
-              </div>
-              <div class="error-message" *ngIf="
+              Password is required
+            </div>
+            <div class="error-message" *ngIf="
 							registrationFrom.get('password').touched &&
 							registrationFrom.get('password').hasError('pattern')
 						">
-                Password isn't strong
-              </div>
+              Password isn't strong
             </div>
+          </div>
 
-            <div class="form-group">
-              <label for="password" class="col-md-4 control-label">confirmPassword</label>
-              <div class="col-md-6">
-                <input type="password" class="form-control" formControlName="confirmPassword" clearOnEdit="false"
-                  validateEqualTo="password">
-              </div>
-              <div class="error-message" *ngIf="
+          <div class="form-group">
+            <label for="password" class="col-md-4 control-label">confirmPassword</label>
+            <div class="col-md-6">
+              <input type="password" class="form-control" formControlName="confirmPassword" clearOnEdit="false"
+                validateEqualTo="password">
+            </div>
+            <div class="error-message" *ngIf="
                 registrationFrom
                   .get('confirmPassword')
                   .hasError('required') &&
                 registrationFrom.get('confirmPassword').touched
               ">
-                Confirm password is required
-              </div>
-              <div class="error-message" *ngIf="
+              Confirm password is required
+            </div>
+            <div class="error-message" *ngIf="
                 registrationFrom.get('confirmPassword').value !==
                   registrationFrom.get('password').value &&
                 registrationFrom.get('confirmPassword').touched &&
@@ -86,25 +85,23 @@
                   '' &&
                 !showValid
               ">
-                Confirm password isn't equal password
-              </div>
+              Confirm password isn't equal password
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+              <button mat-button color="primary" type="submit" (click)="signUp()" [disabled]="!registrationFrom.valid">
+                Register
+              </button>
+              <button mat-button color="accent" (click)="registerModal.close()">
+                Close
+              </button>
             </div>
 
-            <div class="form-group">
-              <div class="col-md-8 col-md-offset-4">
-                <button mat-button color="primary" type="submit" (click)="signUp()"
-                  [disabled]="!registrationFrom.valid">
-                  Register
-                </button>
-                <button mat-button color="accent" (click)="registerModal.close()">
-                  Close
-                </button>
-              </div>
-
-            </div>
-          </form>
-        </div>
-      </div>
+          </div>
+        </form>
+      </mat-card>
     </div>
-  </div>
+  </mat-card>
 </ngx-smart-modal>
