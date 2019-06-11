@@ -34,4 +34,3 @@ $color-overlay: rgba(0, 0, 0, 0.7);
 .black-theme {
   @include angular-material-theme($anms-black-theme);
 }
-@include angular-material-theme($anms-black-theme);

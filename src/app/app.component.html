@@ -4,36 +4,45 @@
 <app-register></app-register>
 
 
+<div class="mat-typography app-frame mat-app-background">
 
-<mat-toolbar color="primary">
+  <mat-toolbar color="primary">
 
-  <button mat-button routerLink="/">
-    <mat-icon>home</mat-icon>
-    {{title}}
-  </button>
+    <button mat-button routerLink="/">
+      <mat-icon>home</mat-icon>
+      {{title}}
+    </button>
 
-  <!-- This fills the remaining space of the current row -->
-  <span class="fill-remaining-space"></span>
-  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-    <button mat-button color="warn" (click)="ngxSmartModalService.getModal('loginModal').open()">Login</button>
-    <button mat-button color="accent" (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button>
-    <button *ngIf="isLoggedIn() && id" [routerLink]="['/user/profile' , id ]">My Profile</button>
-    <button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
-    <button mat-button (click)="changeTheme()">Save changes</button>
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button color="warn" (click)="ngxSmartModalService.getModal('loginModal').open()">Login</button>
+      <button mat-button color="accent"
+        (click)="ngxSmartModalService.getModal('registerModal').open()">Register</button>
+      <button *ngIf="isLoggedIn() && id" [routerLink]="['/user/profile' , id ]">My Profile</button>
+      <button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+      <button *ngIf="theme =='Dark'" mat-button (click)="toggleTheme()"> <i class="material-icons">
+          flash_on
+        </i></button>
+      <button *ngIf="theme =='Light'" mat-button (click)="toggleTheme()"> <i class="material-icons">
+          flash_off
+        </i></button>
+    </div>
+    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+
+  </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item routerLink="/products">Products</button>
+    <button mat-menu-item routerLink="/dashboard">Dashboard</button>
+    <!--<button mat-menu-item>Help</button>-->
+  </mat-menu>
+
+
+
+  <div class="container">
+    <router-outlet></router-outlet>
   </div>
-  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-    <mat-icon>menu</mat-icon>
-  </button>
 
-</mat-toolbar>
-<mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item routerLink="/products">Products</button>
-  <button mat-menu-item routerLink="/dashboard">Dashboard</button>
-  <!--<button mat-menu-item>Help</button>-->
-</mat-menu>
-
-
-
-<div class="container">
-  <router-outlet></router-outlet>
 </div>
