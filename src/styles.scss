@@ -15,16 +15,6 @@ $color-overlay: rgba(0, 0, 0, 0.7);
   margin-right: 5px;
 }
 
-html,
-body,
-app-root,
-.app-frame {
-  overflow: hidden;
-  margin: 0;
-  height: 100%;
-  box-sizing: border-box;
-}
-
 @import "../node_modules/@angular/material/theming";
 
 @include mat-core();
