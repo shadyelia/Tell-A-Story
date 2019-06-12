@@ -6,7 +6,7 @@ import { NgxSmartModalService } from "ngx-smart-modal";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.scss-theme.scss"]
 })
 export class AppComponent {
   @HostBinding("class.light-theme") lightTheme: boolean = true;

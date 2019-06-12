@@ -40,7 +40,8 @@ import {
   MatCardModule,
   MatToolbarModule,
   MatIconModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSidenavModule
 } from "@angular/material";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -76,7 +77,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatToolbarModule,
     FlexLayoutModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule
   ],
   providers: [
     AuthService,
