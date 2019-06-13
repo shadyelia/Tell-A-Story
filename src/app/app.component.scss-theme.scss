@@ -9,20 +9,20 @@
     mat-toolbar {
       button {
         &.active {
-          color: mat-color($accent, default-contrast);
+          color: mat-color($accent);
           background-color: mat-color($accent);
         }
       }
 
       .link {
-        color: mat-color($primary, default-contrast);
+        color: mat-color($primary);
       }
     }
 
     mat-sidenav {
       .mat-list-item {
         &.active {
-          color: mat-color($accent, default-contrast);
+          color: mat-color($accent);
           background-color: mat-color($accent) !important;
 
           &:hover {
@@ -49,12 +49,12 @@
   }
 
   .error-notification-overlay {
-    color: mat-color($warn, default-contrast);
+    color: mat-color($warn);
     background-color: mat-color($warn);
   }
 
   .info-notification-overlay {
-    color: mat-color($accent, default-contrast);
+    color: mat-color($accent);
     background-color: mat-color($accent);
   }
 }
