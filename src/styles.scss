@@ -26,11 +26,13 @@ $color-overlay: rgba(0, 0, 0, 0.7);
 @import "styles-reset.scss-theme";
 @import "app/app.component.scss-theme";
 @import "app/Pages/home/home.component.scss";
+@import "app/Pages/register/register.component.scss";
 
 @mixin custom-components-theme($theme) {
   @include anms-styles-reset-theme($theme);
   @include anms-app-component-theme($theme);
   @include anms-home-component-theme($theme);
+  @include anms-register-component-theme($theme);
 }
 
 .default-theme {
