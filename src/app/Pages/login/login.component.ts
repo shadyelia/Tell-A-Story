@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     private notifyService: NotifyService,
     private authSerivce: AuthService,
     private router: Router //public ngProgress: NgProgress
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
         "",
         Validators.compose([
           Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(
-            /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$-/:-?{-~!"^_`\[\]@%$*])(?=.{8,})/
-          )
+          Validators.minLength(8)
+          // Validators.pattern(
+          //   /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$-/:-?{-~!"^_`\[\]@%$*])(?=.{8,})/
+          // )
         ])
       )
     });
@@ -49,11 +49,12 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       //this.ngProgress.start();
-      this.loginVM.email = this.loginForm.get("email").value();
-      this.loginVM.password = this.loginForm.get("password").value();
+      this.loginVM.email = this.loginForm.get("email").value;
+      this.loginVM.password = this.loginForm.get("password").value;
 
       this.authSerivce.login(this.loginVM).subscribe(
         res => {
+          debugger
           //localStorage.setItem("token", "");
           //localStorage.setItem("person", res);
 
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate["/dashboard"];
         },
         error => {
-          this.notifyService.notify(false, error.error, "error");
+          this.notifyService.notify(false, "error", error.error);
         }
       );
     }

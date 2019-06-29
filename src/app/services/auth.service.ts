@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   login(loginVM: LoginVM) {
-    return this.http.post(environment.url + "/login", loginVM);
+    return this.http.post(environment.url + "authenticate", loginVM);
   }
 
   register(person: Register) {

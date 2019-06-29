@@ -17,7 +17,7 @@ import { UserService } from "./services/user.service";
 import { FollowService } from "./services/follow.service";
 import { StoryService } from "./services/story.service";
 
-import { HttpClientModule, XhrFactory } from "@angular/common/http";
+import { HttpClientModule, XhrFactory, HttpClient } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { RegisterComponent } from "./pages/register/register.component";
@@ -44,6 +44,14 @@ import {
   MatSidenavModule
 } from "@angular/material";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -78,7 +86,15 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     FlexLayoutModule,
     MatIconModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
+
   ],
   providers: [
     AuthService,
@@ -92,4 +108,4 @@ import { FlexLayoutModule } from "@angular/flex-layout";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

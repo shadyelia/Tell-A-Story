@@ -12,8 +12,8 @@ export class UserService {
   constructor(private authService: AuthService, private http: HttpClient) {
     this.userProfileUpdated = new EventEmitter();
     this.headers = new HttpHeaders({
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${this.authService.getToken()}`
+      'Content-Type': 'application/json',
+      //Authorization: `Bearer ${this.authService.getToken()}`
     });
   }
 
