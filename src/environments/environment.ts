@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: "http://ng-api.dev/api/"
+  url: ""
 };
 
 /*

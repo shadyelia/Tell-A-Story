@@ -12,28 +12,28 @@ import { HomeComponent } from "./../pages/home/home.component";
 export const Routes = [
   {
     path: "",
-    component: HomeComponent,
-    canActivate: [AuthedGuard]
+    component: HomeComponent
+    //canActivate: [AuthedGuard]
   },
   {
     path: "auth/login",
-    component: LoginComponent,
-    canActivate: [AuthedGuard]
+    component: LoginComponent
+    //canActivate: [AuthedGuard]
   },
   {
     path: "auth/register",
-    component: RegisterComponent,
-    canActivate: [AuthedGuard]
+    component: RegisterComponent
+    //canActivate: [AuthedGuard]
   },
   {
     path: "dashboard",
-    component: DashboardComponent,
-    canActivate: [AuthGuard]
+    component: DashboardComponent
+    //canActivate: [AuthGuard]
   },
   {
     path: "user/profile/:id",
     component: ProfileComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: "",
@@ -47,7 +47,7 @@ export const Routes = [
   },
   {
     path: "create/story",
-    component: CreateStoryComponent,
-    canActivate: [AuthGuard]
+    component: CreateStoryComponent
+    //canActivate: [AuthGuard]
   }
 ];
